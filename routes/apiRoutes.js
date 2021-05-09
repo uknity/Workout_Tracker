@@ -23,4 +23,13 @@ router.put('/api/workouts/:id', (req, res) => {
   })
 })
 
+router.get('api/workouts/range', (req, res) => {
+  Workout.aggregate([
+    { $sort: ({day:-1 })},
+    { $limit: 7 },
+    { $sum: ({exercises.weight}) }
+    ])
+    
+ })
+
 module.exports = router;
