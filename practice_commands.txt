@@ -1,0 +1,31 @@
+db.workouts.find({"day": $gte:ISODate( "2021-05-08"), $lt:ISODate("2021-05-08") }
+
+find past 7 workouts
+
+db.workouts.find().sort({day:-1 }).limit(7);
+
+db.workouts.aggregate([
+{ $sort: ({day:-1 })},
+{ $limit: 7 },
+( $group: {_id : null, sum: { $sum: "$weight" } }}
+])
+
+db.workouts.aggregate([
+{ $sort: ({day:-1 })},
+{ $limit: 7 },
+{ $sum: {exercises.weight} }}
+])
+
+db.workouts.aggregate([
+{ $sort: ({day:-1 })},
+{ $limit: 7 },
+{ $group: {_id : null, sum: { $sum: '$Exercises.weight' }}},
+]);
+
+You’ll want to use addFields and the sum aggregation method inside of the .aggregate() function call, but you can put all the other stuff like .sort and .limit at the end of .aggregate()
+
+
+
+<p>Commented by {{name}} on {{format_date createdAt}}</p>
+
+
