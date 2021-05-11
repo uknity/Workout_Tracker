@@ -43,6 +43,8 @@ router.put('/api/workouts/:id', (req, res) => {
       console.log('workout range data', workoutData);
       res.json(workoutData);
     });
+    module.exports = router;
+
     // Workout.find({})
     // .then(Workout => {
       // let workoutRange = Workout.aggregate([
@@ -81,4 +83,3 @@ router.put('/api/workouts/:id', (req, res) => {
 
 
 
-module.exports = router;
