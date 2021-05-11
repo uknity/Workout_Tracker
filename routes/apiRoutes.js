@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
 router.get("/api/workout", (req, res) => {
+  console.log('you are in api/workout api routes');
   Workout.find()
     .then((data) => {
       res.json(data);
@@ -13,6 +14,7 @@ router.get("/api/workout", (req, res) => {
 });
 
 router.post("/api/workout", ({ body }, res) => {
+  console.log('you are in the post api/workout route in apiRoutes');
   Workout.create(body)
     .then((data) => {
       res.json(data);

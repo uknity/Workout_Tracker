@@ -9,6 +9,7 @@ const API = {
       console.log(err)
     }
     const json = await res.json();
+    console.log(json);
 
     return json[json.length - 1];
   },
@@ -28,8 +29,11 @@ const API = {
 
     return json;
   },
+
   async createWorkout(data = {}) {
-    const res = await fetch("/api/workout/range", {
+    console.log('you are in the createworkout api function in api.js');
+    const res = await fetch("/api/workout", {
+    // const res = await fetch("/api/workout/range", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
